@@ -1,0 +1,35 @@
+Private Sub Command1_Click() '信息输入完毕按钮
+MsgBox "您确定么？"
+'SendKeys ^C[, wait]
+b = Len(Text1.Text)
+Text1.SelStart = 0
+Text1.SelLength = b
+Text1.SetFocus
+'Debug.Print Text1.SelText
+'keybd_event VK_Ctrl, MapVirtualKey(VK_Ctrl, 0), 0, 0
+SendKeys ("^C")
+End Sub
+
+Private Sub Command2_Click() '开始按钮
+rep = Text2
+For m = 1 To Text2
+SendKeys ("^V")
+SendKeys ("{ENTER}")
+Next
+End Sub
+
+Private Sub Command3_Click() '立即退出程序按钮
+Dim msg As Integer
+Form1.Visible = False
+msg = MsgBox("确认要推出吗？", vbYesNo, "退出的最后确认")
+If msg = vbYes Then
+End
+Else
+Form1.Visible = True
+End If
+End Sub
+
+Private Sub Form_Load()
+Dim p As Integer, q As Integer
+rep = Text2.Text
+End Sub
